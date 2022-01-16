@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <meta charset="uft-8">    
+        <title>cadeiras cinema</title>
+        <link rel="stylesheet" type="text/css" href="Style.css">   
+    <script language="javascript">
+
+        var indice = 0;
+        
+
+        function clicou(Linha, Coluna) 
+        {
+            poltrona = new Array(15);
+
+            for(var i = 0; i < poltrona.length; i++){
+                poltrona[i] = new Array(40);   
+            }
+            
+            if (poltrona[Linha][Coluna] != 0){
+                poltrona[Linha*Coluna] = 0
+                alert("Cadeira foi reservada.");
+                document.getElementById(Linha+","+Coluna).setAttribute("src","cadeiraSelecionada.gif");
+                indice ++
+            }
+            
+        } 
+        function ocupacao() {
+            alert("Dos 600 lugares, " + indice +" foram reservados. "+"Taxa de ocupação: "+ (indice / 600) * 100 + "%");
+            
+        }
+    </script>
+    </head>
+    <body>
+        <center>       
+            <h1>CINEJÃO</h1>
+        <form>
+            <table>
+    
+        <script language="javascript">
+            var num = 1;
+
+            var lugar = new Array();
+
+
+            for(var i = 0; i < 16; i++)
+            {
+                lugar[i] = new Array();
+                
+            }
+ 
+
+            for (var linha = 1; linha <= 16; linha++) 
+            {
+                document.write("<tr>");
+
+                for (var coluna = 1; coluna <= 40 ; coluna++) 
+                {
+                lugar[linha][coluna] = "<img id='"+ linha +","+ coluna + "' width='30' height='30' src='cadeiraOcupada.gif' onclick='clicou(" + linha + "," + coluna + ");'><br>";
+                document.write("<td>" + lugar[linha][coluna] + "</td>");
+                num++
+                }
+                document.write("</tr>");
+            }
+        </script>
+        </table>
+        <input type="button" value="Taxa de ocupação" onclick="ocupacao();">
+        </form>
+    </body>
+</html>
